@@ -1,0 +1,9 @@
+{
+  "IN": { "country": "India", "emergency": "112", "disaster": "1078 (NDMA)", "ambulance": "102 / 108" },
+  "US": { "country": "United States", "emergency": "911", "disaster": "1-800-621-3362 (FEMA)", "ambulance": "911" },
+  "GB": { "country": "United Kingdom", "emergency": "999 / 112", "disaster": "0345 988 1188 (Floodline)", "ambulance": "999" },
+  "AU": { "country": "Australia", "emergency": "000", "disaster": "132 500 (SES Flood & Storm)", "ambulance": "000" },
+  "JP": { "country": "Japan", "emergency": "110 / 119", "disaster": "171 (Disaster Emergency)", "ambulance": "119" },
+  "DEFAULT": { "country": "International", "emergency": "112", "disaster": "Contact Local Municipal Authority", "ambulance": "112" }
+}
+

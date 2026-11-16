@@ -1,0 +1,4 @@
+import { startIoTTelemetryGenerator } from './services/iotStreamGenerator.js';
+import http from 'node:http'; import {Server} from 'socket.io'; import cron from 'node-cron'; import {makeApp} from './app.js'; import {connectDb} from './config/db.js'; import {env} from './config/env.js'; import {ingestAll,setIo} from './services/ingestion.js';
+import {ensurePlatformSeedData} from './routes/platformRoutes.js';
+await connectDb(); await ensurePlatformSeedData(); const app=makeApp();const server=http.createServer(app);const io=new Server(server,{cors:{origin:true,credentials:true}});setIo(io); startIoTTelemetryGenerator(io);io.on('connection',s=>s.emit('connected'));cron.schedule(env.INGEST_CRON,()=>ingestAll());server.listen(env.PORT,()=>{console.log(`FloodSense API on ${env.PORT}`);setTimeout(()=>ingestAll(),1000);});

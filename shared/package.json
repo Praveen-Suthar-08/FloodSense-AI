@@ -1,0 +1,1 @@
+{"name":"@floodsense/shared","version":"1.0.0","type":"module","exports":{"./riskEngine":"./riskEngine.js"}}

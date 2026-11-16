@@ -1,0 +1,2 @@
+export const haversineKm=(a,b,c,d)=>{const r=Math.PI/180;const x=(c-a)*r,y=(d-b)*r;const h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 6371*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));};
+export const parseOverpass=(data,lat,lon)=>((data?.elements)||[]).filter(x=>Number.isFinite(x.lat)&&Number.isFinite(x.lon)).map(x=>({name:x.tags?.name||'Unnamed facility',type:x.tags?.amenity||x.tags?.emergency||'assembly point',lat:x.lat,lon:x.lon,distanceKm:Number(haversineKm(lat,lon,x.lat,x.lon).toFixed(2))})).sort((a,b)=>a.distanceKm-b.distanceKm).slice(0,30);
